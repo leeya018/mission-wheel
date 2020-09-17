@@ -1,0 +1,135 @@
+.circle {
+    /* background: red; */
+    /* border-radius: 100%; */
+    width: 30em;
+    height: 30em;
+    background: url(./wheel1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    /* width:30em; */
+    /* height:30em; */
+    /* margin:50px auto; */
+    /* border:4px solid rgb(50,50,50); */
+    /* background-image: linear-gradient(top, red, red 50%, transparent 50%, transparent 100%);
+    background-image: -webkit-linear-gradient(top, red, red 50%, transparent 50%, transparent 100%); */
+    /* background: linear-gradient(180deg, transparent, #353535, transparent); */
+    /* background-color: red; */
+}   
+
+.circle>span {
+
+    /* position: absolute;  */
+}
+
+.pin {
+    width: 9em;
+    height: 6em;
+    margin-left: 10em;
+    background: url(./pin.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.click-here {
+    right:16em;
+    position: absolute;
+    font-size: 1em;
+    animation: textgrowth 1s infinite alternate;
+}
+
+@keyframes textgrowth {
+    0% {
+    font-size: 1em;
+    }
+    100% {
+    font-size: 1.2em;
+    }
+}
+
+.handle {
+    width: 9em;
+    height: 6em;
+    background: url(./handle.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;  
+}
+
+.handle:focus {
+    transform: rotate(60deg);
+}
+#player {
+    visibility: hidden;
+}
+.container {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+
+    }
+
+    .surprise {
+        width: 10em;
+        height: 10em;
+        visibility: hidden;
+        background: url(./present1.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+        animation-name: example;
+        animation: example 1s infinite alternate;
+        position: absolute;
+        margin-left: 4em;
+        margin-top: 5em;
+    }
+
+
+    @keyframes example {
+        0%  {width: 10em;}
+        100%  {width: 11em;}
+      }
+
+
+      /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    font-size: 2em;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  

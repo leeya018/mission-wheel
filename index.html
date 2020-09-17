@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <audio id="player" controls>
+        <source src="rotation-weel.mp3" type="audio/ogg">
+      Your browser does not support the audio element.
+      </audio>
+      <div class="pics">
+
+          <div class="pin"></div>
+        
+
+          <div class="circle" id="wheel">    </div>
+        </div>
+        <span class="click-here">click here</span>
+        <div class="handle" ></div>
+        <div class="surprise"></div>
+        <!-- Trigger/Open The Modal -->
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p class="txt">Some text in the Modal..</p>
+    </div>
+
+    </div>
+</div>
+    <script >
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    // var btn = document.getElementById("myBtn");
+    var surprize = document.getElementsByClassName("surprise")[0];
+
+    
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    var handle = document.getElementsByClassName("handle")[0];
+    
+
+    handle.addEventListener("mousedown",(e)=>{
+        console.log("key is down")
+        handle.style.transform  = 'rotate('+60+'deg)'; ;
+    })  
+
+    
+    handle.addEventListener("mouseup",(e)=>{
+        console.log("key is up")
+        handle.style.transform  = 'rotate('+360+'deg)'; ;
+        createInterval()
+    })
+
+    // When the user clicks on the button, open the modal
+    surprize.onclick = function() {
+    modal.style.display = "block";
+    surprize.style.visibility = "hidden";
+    getChoise()
+    // let txt = document.getElementsByClassName("txt")[0].textContent = 'nhjhjkrwejhew'
+
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+
+    }
+    }
+
+    let deg  = 0
+    let time=10
+    let degLimit =500
+
+
+    function stopInterval(rotateInterval){
+        return  new Promise ((resolve,reject)=>{
+            setTimeout(() => {
+                clearInterval(rotateInterval)
+                resolve("succcess")
+         }, 3000);
+        })
+    }
+
+    function showPresent(){
+        return  new Promise ((resolve,reject)=>{
+            setTimeout(() => {
+                document.getElementsByClassName("surprise")[0].style.visibility = "visible";
+                resolve("succcess")
+         }, 300);
+        })
+    }
+
+
+    async function createInterval(){
+        var ply = document.getElementById('player');
+        ply.play()
+        let rotate1Interval  = setInterval(rotation,10)
+        await stopInterval(rotate1Interval)
+        console.log("stop with interval ")
+        let rotate2Interval  = setInterval(rotation,20)
+        await stopInterval(rotate2Interval)
+        let rotate3Interval  = setInterval(rotation,30)
+        await stopInterval(rotate3Interval)
+        ply.pause()
+        await showPresent()
+  
+        console.log("deg : "+deg)
+
+
+
+}
+
+let items ={
+    // "40":"111",
+    // "50":"222",
+    // "0":"333",
+    // "10":"444",
+    // "20":"555",
+    // "30":"666",
+
+    "40":"7 days challange with just happy thoughts",
+    "50":"call 5 people and tell them something that you like about them",
+    "0":"crate a lecture live which can help other people at home, call it prehad and do it ",
+    "10":"practice for hole day at least 5 time that you changing the body use to shift the emotion you are in , like happy , passionate, force it 5-10 time in a row",
+    "20":"create a video that you are saying all the good things about your self and the things that you are appritiating, now watch it ",
+    "30":"choose something you want to do but really make  you fear , and overcome that fear by doing the thing you are afraid of ",
+
+    // "40":"666",
+    // "50":"111",
+    // "0":"222",
+    // "10":"333",
+    // "20":"555",
+    // "30":"555",
+
+
+}
+
+function getChoise(){
+    let data = deg %60 
+    console.log(items[data])
+    let txt = document.getElementsByClassName("txt")[0].textContent = items[data]
+}
+    function rotation(){
+        document.getElementById("wheel").style.transform= 'rotate('+deg+'deg)'; ;
+        deg+=10;
+         
+    }
+
+    function resetVars() {
+        clearInterval(rotateInterval)
+        time = 10
+        deg=0
+    }
+    </script> 
+</body>
+</html>
+
